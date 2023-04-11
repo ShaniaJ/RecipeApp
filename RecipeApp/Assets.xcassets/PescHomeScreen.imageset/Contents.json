@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "merlin_154348170_27889e9f-9ca7-4615-adea-770d38d64e99-master768.pdf",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

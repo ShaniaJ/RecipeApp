@@ -1,24 +1,800 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lr5-ZX-9lZ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Home-->
+        <scene sceneID="Sda-w8-Kqw">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController title="Home" id="OvK-ov-Hyb" customClass="HomeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mKP-NO-IV5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2V-Bk-sPh">
+                                <rect key="frame" x="12" y="606" width="390" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="7u8-0m-AeC"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Vegetarian">
+                                    <backgroundConfiguration key="background" cornerRadius="30" image="VegetarianHomeScreen" imageContentMode="center" strokeWidth="1">
+                                        <color key="strokeColor" red="0.47843140360000003" green="0.27608805190000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="30"/>
+                                    <directionalEdgeInsets key="contentInsets" top="80" leading="0.0" bottom="0.0" trailing="197"/>
+                                    <color key="baseForegroundColor" red="0.47843140360000003" green="0.27608805188940078" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="vegetarianButtonClicked:" destination="OvK-ov-Hyb" eventType="touchUpInside" id="UYM-KL-PXg"/>
+                                    <segue destination="V7r-gL-aNB" kind="show" id="gwj-j5-ZIL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aT-Tl-ZJq">
+                                <rect key="frame" x="12" y="746" width="390" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="qmM-Vd-Ex4"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Pescatarian">
+                                    <backgroundConfiguration key="background" cornerRadius="30" image="PescHomeScreen" imageContentMode="center" strokeWidth="1" strokeOutset="0.0">
+                                        <color key="strokeColor" red="0.28052372739999998" green="0.47843140360000003" blue="0.4683136" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="30"/>
+                                    <directionalEdgeInsets key="contentInsets" top="80" leading="0.0" bottom="0.0" trailing="177"/>
+                                    <color key="baseForegroundColor" red="0.28052372743772996" green="0.47843140360000003" blue="0.46831360004199102" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pescButtonClicked:" destination="OvK-ov-Hyb" eventType="touchUpInside" id="Ix0-C4-RLE"/>
+                                    <segue destination="iNz-7z-YRF" kind="show" id="908-Z4-NVZ"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradientHomeScreen" translatesAutoresizingMaskIntoConstraints="NO" id="l85-1e-Guz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="461"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGo-PO-h4N">
+                                <rect key="frame" x="12" y="466" width="390" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="Nth-fb-kl7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Vegan">
+                                    <backgroundConfiguration key="background" cornerRadius="30" image="VeganHomeScreen" imageContentMode="left">
+                                        <color key="strokeColor" red="0.2941176593" green="0.47843140360000003" blue="0.24313727020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="30"/>
+                                    <directionalEdgeInsets key="contentInsets" top="80" leading="0.0" bottom="0.0" trailing="270"/>
+                                    <color key="baseForegroundColor" red="0.2941176593" green="0.47843140360000003" blue="0.24313727020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="veganButtonClicked:" destination="OvK-ov-Hyb" eventType="touchUpInside" id="ao4-Fk-Z8b"/>
+                                    <segue destination="Faq-2F-YY8" kind="show" identifier="" id="Rzp-XG-J0v"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPF-vZ-yvf">
+                                <rect key="frame" x="20" y="97" width="232" height="43"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3x-bD-FXf">
+                                <rect key="frame" x="72" y="176" width="270" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="4lF-Vr-33T"/>
+                                    <constraint firstAttribute="height" constant="270" id="tpr-fs-mfd"/>
+                                </constraints>
+                                <color key="tintColor" red="0.72156864399999998" green="0.53333336109999996" blue="0.28627452250000002" alpha="0.89600579470198671" colorSpace="custom" customColorSpace="displayP3"/>
+                                <size key="titleShadowOffset" width="15" height="8"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="circle.fill" catalog="system"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-kz-rFG">
+                                <rect key="frame" x="127" y="230.5" width="160" height="161.5"/>
+                                <string key="text">Producing livestock, including cattle, goats and sheep, for human consumption is the single largest driver of habitat loss and deforestation worldwide</string>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shania" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y09-ei-pCr">
+                                <rect key="frame" x="125" y="132" width="289" height="48"/>
+                                <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="38"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvS-7j-2i6">
+                                <rect key="frame" x="50" y="188" width="81" height="127"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127" id="6Sh-mM-gfi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JMJ-gd-wlf"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NGo-PO-h4N" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="12" id="1j7-gE-GRz"/>
+                            <constraint firstItem="VvS-7j-2i6" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="50" id="5D0-2d-SjO"/>
+                            <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="X2V-Bk-sPh" secondAttribute="trailing" constant="12" id="7nt-fC-m14"/>
+                            <constraint firstItem="y09-ei-pCr" firstAttribute="top" secondItem="yPF-vZ-yvf" secondAttribute="bottom" constant="-8" id="8Kx-Zd-F4A"/>
+                            <constraint firstAttribute="bottom" secondItem="8aT-Tl-ZJq" secondAttribute="bottom" constant="20" id="95j-d8-nZv"/>
+                            <constraint firstItem="X2V-Bk-sPh" firstAttribute="top" secondItem="NGo-PO-h4N" secondAttribute="bottom" constant="10" id="AhW-vf-fI1"/>
+                            <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="8aT-Tl-ZJq" secondAttribute="trailing" constant="12" id="GWN-db-b98"/>
+                            <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="VvS-7j-2i6" secondAttribute="trailing" constant="283" id="J8l-SD-XNz"/>
+                            <constraint firstItem="yPF-vZ-yvf" firstAttribute="top" secondItem="JMJ-gd-wlf" secondAttribute="top" constant="5" id="Jfq-qO-MNC"/>
+                            <constraint firstItem="X2V-Bk-sPh" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="12" id="MSU-7V-77F"/>
+                            <constraint firstItem="gqB-kz-rFG" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="127" id="Pmu-i9-wlK"/>
+                            <constraint firstItem="k3x-bD-FXf" firstAttribute="centerX" secondItem="mKP-NO-IV5" secondAttribute="centerX" id="Qpd-Yg-NQk"/>
+                            <constraint firstItem="gqB-kz-rFG" firstAttribute="centerX" secondItem="k3x-bD-FXf" secondAttribute="centerX" id="Qqz-h4-xAi"/>
+                            <constraint firstItem="yPF-vZ-yvf" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="20" id="RgG-q5-7xX"/>
+                            <constraint firstItem="VvS-7j-2i6" firstAttribute="top" secondItem="y09-ei-pCr" secondAttribute="bottom" constant="8" symbolic="YES" id="Wm8-wa-aTb"/>
+                            <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="NGo-PO-h4N" secondAttribute="trailing" constant="12" id="XxA-bF-dBk"/>
+                            <constraint firstItem="gqB-kz-rFG" firstAttribute="centerY" secondItem="k3x-bD-FXf" secondAttribute="centerY" id="Zn9-OR-PGr"/>
+                            <constraint firstItem="y09-ei-pCr" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="125" id="eGx-Pd-tUQ"/>
+                            <constraint firstItem="8aT-Tl-ZJq" firstAttribute="top" secondItem="X2V-Bk-sPh" secondAttribute="bottom" constant="10" id="f9N-aC-CIf"/>
+                            <constraint firstItem="y09-ei-pCr" firstAttribute="trailing" secondItem="JMJ-gd-wlf" secondAttribute="trailing" id="min-an-wRz"/>
+                            <constraint firstItem="8aT-Tl-ZJq" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="12" id="nae-rq-rcd"/>
+                            <constraint firstItem="NGo-PO-h4N" firstAttribute="top" secondItem="k3x-bD-FXf" secondAttribute="bottom" constant="20" id="yZF-Kt-prk"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ffu-oT-Vl1"/>
+                    <connections>
+                        <outlet property="brownButton" destination="k3x-bD-FXf" id="sq3-2E-cQ9"/>
+                        <outlet property="factsLabel" destination="gqB-kz-rFG" id="osF-KE-Tk8"/>
+                        <outlet property="nameLabel" destination="y09-ei-pCr" id="LfC-wC-AoJ"/>
+                        <outlet property="veganRecipeButton" destination="NGo-PO-h4N" id="j0Q-OS-aa8"/>
+                        <outlet property="welcomeBackLabel" destination="yPF-vZ-yvf" id="foN-Cc-oHl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QoA-SP-jLI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1039.1304347826087" y="133.92857142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aSM-eH-7hN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lr5-ZX-9lZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JfT-zv-IBr">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OvK-ov-Hyb" kind="relationship" relationship="rootViewController" id="4CQ-qf-1Lo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XvN-dZ-DYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.98550724637681" y="133.92857142857142"/>
+        </scene>
+        <!--Vegan Recipes-->
+        <scene sceneID="ZZi-1M-Asp">
+            <objects>
+                <viewController id="Faq-2F-YY8" customClass="VeganRecipeMealsViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B0D-C0-qOJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZJ-eK-WkS">
+                                <rect key="frame" x="8" y="92" width="197" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="RGl-zv-nXg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="197" id="ZrD-6l-7qH"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Breakfast">
+                                    <backgroundConfiguration key="background" image="BreakfastVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="VGq-bj-9Ax"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Znn-l3-Rig">
+                                <rect key="frame" x="8" y="246" width="398" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="WOK-OL-AYZ"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Starters">
+                                    <backgroundConfiguration key="background" image="StartersVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="J1s-6x-WAi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZ6-Aq-9xy">
+                                <rect key="frame" x="8" y="370" width="250" height="145"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="yoD-MG-vcN"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sides">
+                                    <backgroundConfiguration key="background" image="SidesVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="sPg-M4-kkd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4g-TL-EyV">
+                                <rect key="frame" x="262" y="370" width="144" height="145"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="B8D-6p-Iaz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="144" id="kX4-6n-Jqh"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sauces">
+                                    <backgroundConfiguration key="background" image="SaucesVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="g0N-wc-9wc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLg-db-tYr">
+                                <rect key="frame" x="190" y="519" width="216" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="214" id="0KK-T2-f5Z"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="216" id="4G5-xx-V7l"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dinner">
+                                    <backgroundConfiguration key="background" image="DinnerVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="gbv-sz-abU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9I-0E-q2t">
+                                <rect key="frame" x="8" y="737" width="398" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="124" id="64L-OI-VSV"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dessert">
+                                    <backgroundConfiguration key="background" image="DessertVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="O9f-jR-pX4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8r-gP-uGG">
+                                <rect key="frame" x="8" y="519" width="178" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="214" id="oZU-j9-2IR"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Drinks">
+                                    <backgroundConfiguration key="background" image="DrinksVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="8sS-5K-fL6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ky-ha-irE">
+                                <rect key="frame" x="209" y="92" width="197" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="RPm-E7-Zyi"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Snacks">
+                                    <backgroundConfiguration key="background" image="SnacksVegan" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Faq-2F-YY8" eventType="touchUpInside" id="CMh-Z6-wBd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MYz-1u-uNe"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LZ6-Aq-9xy" firstAttribute="top" secondItem="Znn-l3-Rig" secondAttribute="bottom" constant="4" id="0bB-Dm-iDf"/>
+                            <constraint firstItem="MYz-1u-uNe" firstAttribute="trailing" secondItem="Q9I-0E-q2t" secondAttribute="trailing" constant="8" id="3hJ-0S-0bD"/>
+                            <constraint firstItem="Znn-l3-Rig" firstAttribute="leading" secondItem="MYz-1u-uNe" secondAttribute="leading" constant="8" id="4hI-e4-u7w"/>
+                            <constraint firstItem="9ky-ha-irE" firstAttribute="top" secondItem="MYz-1u-uNe" secondAttribute="top" id="7SQ-C6-vpQ"/>
+                            <constraint firstItem="MYz-1u-uNe" firstAttribute="trailing" secondItem="iLg-db-tYr" secondAttribute="trailing" constant="8" id="Fw1-oF-gbt"/>
+                            <constraint firstItem="e4g-TL-EyV" firstAttribute="leading" secondItem="LZ6-Aq-9xy" secondAttribute="trailing" constant="4" id="HYT-9y-4BX"/>
+                            <constraint firstItem="MYz-1u-uNe" firstAttribute="trailing" secondItem="Znn-l3-Rig" secondAttribute="trailing" constant="8" id="NJ7-Ax-EXz"/>
+                            <constraint firstItem="MYz-1u-uNe" firstAttribute="trailing" secondItem="9ky-ha-irE" secondAttribute="trailing" constant="8" id="XG3-NN-PCd"/>
+                            <constraint firstItem="Q9I-0E-q2t" firstAttribute="leading" secondItem="MYz-1u-uNe" secondAttribute="leading" constant="8" id="XxD-jE-BeZ"/>
+                            <constraint firstItem="MYz-1u-uNe" firstAttribute="bottom" secondItem="Q9I-0E-q2t" secondAttribute="bottom" constant="1" id="ZBl-CG-oE5"/>
+                            <constraint firstItem="Q9I-0E-q2t" firstAttribute="top" secondItem="P8r-gP-uGG" secondAttribute="bottom" constant="4" id="cNH-MM-Bgz"/>
+                            <constraint firstItem="fZJ-eK-WkS" firstAttribute="top" secondItem="MYz-1u-uNe" secondAttribute="top" id="cg0-bz-QqS"/>
+                            <constraint firstItem="LZ6-Aq-9xy" firstAttribute="leading" secondItem="MYz-1u-uNe" secondAttribute="leading" constant="8" id="eKq-zq-2j2"/>
+                            <constraint firstItem="P8r-gP-uGG" firstAttribute="top" secondItem="LZ6-Aq-9xy" secondAttribute="bottom" constant="4" id="elu-y0-zWT"/>
+                            <constraint firstItem="9ky-ha-irE" firstAttribute="leading" secondItem="fZJ-eK-WkS" secondAttribute="trailing" constant="4" id="erx-WK-FAi"/>
+                            <constraint firstItem="MYz-1u-uNe" firstAttribute="trailing" secondItem="e4g-TL-EyV" secondAttribute="trailing" constant="8" id="g9N-M3-V2i"/>
+                            <constraint firstItem="Znn-l3-Rig" firstAttribute="top" secondItem="fZJ-eK-WkS" secondAttribute="bottom" constant="4" id="hOx-u7-qxh"/>
+                            <constraint firstItem="e4g-TL-EyV" firstAttribute="top" secondItem="Znn-l3-Rig" secondAttribute="bottom" constant="4" id="kJh-7I-Nmf"/>
+                            <constraint firstItem="P8r-gP-uGG" firstAttribute="leading" secondItem="MYz-1u-uNe" secondAttribute="leading" constant="8" id="qbS-Md-H1z"/>
+                            <constraint firstItem="iLg-db-tYr" firstAttribute="top" secondItem="LZ6-Aq-9xy" secondAttribute="bottom" constant="4" id="szs-K5-PIZ"/>
+                            <constraint firstItem="fZJ-eK-WkS" firstAttribute="leading" secondItem="MYz-1u-uNe" secondAttribute="leading" constant="8" id="wZE-m7-8mF"/>
+                            <constraint firstItem="Q9I-0E-q2t" firstAttribute="top" secondItem="iLg-db-tYr" secondAttribute="bottom" constant="4" id="zVm-WA-ToL"/>
+                            <constraint firstItem="iLg-db-tYr" firstAttribute="leading" secondItem="P8r-gP-uGG" secondAttribute="trailing" constant="4" id="zwC-RC-9Lb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Vegan Recipes" id="Pdc-ex-xpO"/>
+                    <connections>
+                        <segue destination="v5e-qN-ZWA" kind="show" identifier="showVeganRecipes" id="ceD-5A-k9s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUa-g8-puN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295.6521739130435" y="862.5"/>
+        </scene>
+        <!--Vegetarian Recipes-->
+        <scene sceneID="qCJ-r7-ABl">
+            <objects>
+                <viewController id="V7r-gL-aNB" customClass="VegetarianRecipeMealsViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kmh-RI-ims">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hy7-LZ-gaz">
+                                <rect key="frame" x="8" y="92" width="398" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="UrK-Hm-uvv"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Breakfast">
+                                    <backgroundConfiguration key="background" image="BreakfastVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="isw-zg-X2X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YG4-sS-oSz">
+                                <rect key="frame" x="8" y="246" width="164" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="JQw-Ze-TP8"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Starters">
+                                    <backgroundConfiguration key="background" image="StartersVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="foY-9W-cKh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mC-3q-iId">
+                                <rect key="frame" x="8" y="509" width="178" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="xFL-53-hvl"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sides">
+                                    <backgroundConfiguration key="background" image="SidesVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="CIo-w2-QjQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2e-s2-S0t">
+                                <rect key="frame" x="8" y="703" width="157" height="158"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sauces">
+                                    <backgroundConfiguration key="background" image="SaucesVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="5Fw-7c-l5b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIs-GB-nwk">
+                                <rect key="frame" x="190" y="509" width="216" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="6sZ-2u-WSc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="216" id="HOJ-Uz-deh"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dinner">
+                                    <backgroundConfiguration key="background" image="DinnerVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="mlD-2w-ym2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-DT-Ph1">
+                                <rect key="frame" x="169" y="703" width="237" height="158"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="237" id="8oo-vh-hbb"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dessert">
+                                    <backgroundConfiguration key="background" image="DessertVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="OeV-bn-788"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaz-eJ-fcb">
+                                <rect key="frame" x="176" y="246" width="230" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="5Fx-Wo-926"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="cTt-Vr-We2"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Drinks">
+                                    <backgroundConfiguration key="background" image="DrinksVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="1bb-vz-Zld"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asn-iN-bNy">
+                                <rect key="frame" x="8" y="370" width="398" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="G3G-38-zbA"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Snacks">
+                                    <backgroundConfiguration key="background" image="SnacksVeg" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="V7r-gL-aNB" eventType="touchUpInside" id="vOA-nT-RhJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YOY-DH-tP0"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kjp-DT-Ph1" firstAttribute="leading" secondItem="M2e-s2-S0t" secondAttribute="trailing" constant="4" id="0ba-4U-dQV"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="bottom" secondItem="kjp-DT-Ph1" secondAttribute="bottom" constant="1" id="23A-Lm-uom"/>
+                            <constraint firstItem="hy7-LZ-gaz" firstAttribute="leading" secondItem="YOY-DH-tP0" secondAttribute="leading" constant="8" id="3hr-j4-a9z"/>
+                            <constraint firstItem="asn-iN-bNy" firstAttribute="leading" secondItem="YOY-DH-tP0" secondAttribute="leading" constant="8" id="51N-r5-Hqr"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="trailing" secondItem="kjp-DT-Ph1" secondAttribute="trailing" constant="8" id="BKJ-rh-F2x"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="trailing" secondItem="AIs-GB-nwk" secondAttribute="trailing" constant="8" id="EAP-Oo-73r"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="bottom" secondItem="M2e-s2-S0t" secondAttribute="bottom" constant="1" id="Meq-p5-2Uz"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="trailing" secondItem="asn-iN-bNy" secondAttribute="trailing" constant="8" id="Pvl-VW-tX0"/>
+                            <constraint firstItem="kjp-DT-Ph1" firstAttribute="top" secondItem="AIs-GB-nwk" secondAttribute="bottom" constant="4" id="RwX-J5-Z9C"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="trailing" secondItem="aaz-eJ-fcb" secondAttribute="trailing" constant="8" id="T9d-w6-aoj"/>
+                            <constraint firstItem="YG4-sS-oSz" firstAttribute="top" secondItem="hy7-LZ-gaz" secondAttribute="bottom" constant="4" id="Tc3-V7-GBV"/>
+                            <constraint firstItem="aaz-eJ-fcb" firstAttribute="leading" secondItem="YG4-sS-oSz" secondAttribute="trailing" constant="4" id="Tdw-Hm-1eJ"/>
+                            <constraint firstItem="hy7-LZ-gaz" firstAttribute="top" secondItem="YOY-DH-tP0" secondAttribute="top" id="YnQ-wM-nsW"/>
+                            <constraint firstItem="asn-iN-bNy" firstAttribute="top" secondItem="YG4-sS-oSz" secondAttribute="bottom" constant="4" id="ghH-Rq-K78"/>
+                            <constraint firstItem="aaz-eJ-fcb" firstAttribute="top" secondItem="hy7-LZ-gaz" secondAttribute="bottom" constant="4" id="hwb-2B-cnR"/>
+                            <constraint firstItem="M2e-s2-S0t" firstAttribute="top" secondItem="1mC-3q-iId" secondAttribute="bottom" constant="4" id="joU-Xk-pP6"/>
+                            <constraint firstItem="YOY-DH-tP0" firstAttribute="trailing" secondItem="hy7-LZ-gaz" secondAttribute="trailing" constant="8" id="oQ3-eV-plx"/>
+                            <constraint firstItem="1mC-3q-iId" firstAttribute="leading" secondItem="YOY-DH-tP0" secondAttribute="leading" constant="8" id="p6U-g9-Sit"/>
+                            <constraint firstItem="1mC-3q-iId" firstAttribute="top" secondItem="asn-iN-bNy" secondAttribute="bottom" constant="4" id="pIn-fG-c5d"/>
+                            <constraint firstItem="AIs-GB-nwk" firstAttribute="leading" secondItem="1mC-3q-iId" secondAttribute="trailing" constant="4" id="qyx-sn-mgs"/>
+                            <constraint firstItem="YG4-sS-oSz" firstAttribute="leading" secondItem="Kmh-RI-ims" secondAttribute="leading" constant="8" id="rD0-cO-NlX"/>
+                            <constraint firstItem="AIs-GB-nwk" firstAttribute="top" secondItem="asn-iN-bNy" secondAttribute="bottom" constant="4" id="tlF-V2-tjR"/>
+                            <constraint firstItem="M2e-s2-S0t" firstAttribute="leading" secondItem="YOY-DH-tP0" secondAttribute="leading" constant="8" id="zBf-SU-Uw6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Vegetarian Recipes" id="x3t-Qu-Evo"/>
+                    <connections>
+                        <segue destination="v5e-qN-ZWA" kind="show" identifier="showVegetarianRecipes" id="Mdd-3R-nJj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="haW-g5-ajj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037.68115942029" y="862.5"/>
+        </scene>
+        <!--Recipes-->
+        <scene sceneID="IM0-jR-TjU">
+            <objects>
+                <tableViewController id="v5e-qN-ZWA" customClass="RecipeListTableViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="jXb-He-dnL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="130" id="C0u-5h-Of7">
+                                <rect key="frame" x="0.0" y="50" width="414" height="130"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C0u-5h-Of7" id="SGz-Fx-dIh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s7Z-VE-EcQ">
+                                            <rect key="frame" x="20" y="8" width="114" height="114"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="114" id="DYl-HU-AsI"/>
+                                                <constraint firstAttribute="height" constant="114" id="uvD-Iv-s7H"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready in x mins Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e96-AW-Xyc">
+                                            <rect key="frame" x="191" y="41.5" width="148" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serves Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEP-z0-xS6">
+                                            <rect key="frame" x="316" y="104" width="88" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F4-kc-f4X">
+                                            <rect key="frame" x="136" y="19" width="258" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="s7Z-VE-EcQ" secondAttribute="bottom" constant="8" id="0ky-OL-Ksj"/>
+                                        <constraint firstItem="6F4-kc-f4X" firstAttribute="top" secondItem="SGz-Fx-dIh" secondAttribute="topMargin" constant="8" id="2vi-6d-XLQ"/>
+                                        <constraint firstItem="s7Z-VE-EcQ" firstAttribute="top" secondItem="SGz-Fx-dIh" secondAttribute="top" constant="8" id="8U1-kQ-o5S"/>
+                                        <constraint firstItem="e96-AW-Xyc" firstAttribute="top" secondItem="6F4-kc-f4X" secondAttribute="bottom" constant="2" id="DWd-71-37U"/>
+                                        <constraint firstAttribute="trailing" secondItem="MEP-z0-xS6" secondAttribute="trailing" constant="10" id="Fx6-vI-nng"/>
+                                        <constraint firstItem="6F4-kc-f4X" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SGz-Fx-dIh" secondAttribute="trailingMargin" id="Reh-S0-KWJ"/>
+                                        <constraint firstItem="6F4-kc-f4X" firstAttribute="leading" secondItem="s7Z-VE-EcQ" secondAttribute="trailing" constant="2" id="U9C-qE-1m8"/>
+                                        <constraint firstItem="s7Z-VE-EcQ" firstAttribute="leading" secondItem="SGz-Fx-dIh" secondAttribute="leading" constant="20" symbolic="YES" id="UZz-E1-d3j"/>
+                                        <constraint firstItem="MEP-z0-xS6" firstAttribute="bottom" secondItem="s7Z-VE-EcQ" secondAttribute="bottom" id="WUC-rD-uyc"/>
+                                        <constraint firstItem="MEP-z0-xS6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s7Z-VE-EcQ" secondAttribute="trailing" constant="182" id="hfO-uE-JtC"/>
+                                        <constraint firstItem="e96-AW-Xyc" firstAttribute="centerX" secondItem="6F4-kc-f4X" secondAttribute="centerX" id="w4W-lo-nW5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="v5e-qN-ZWA" id="Gj2-8p-iL1"/>
+                            <outlet property="delegate" destination="v5e-qN-ZWA" id="tFc-pS-nZX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recipes" id="MZo-Hj-CdK">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="0Cy-37-Hg0"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D99-aE-pTY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037.68115942029" y="1600.4464285714284"/>
+        </scene>
+        <!--Pescatarian Recipes-->
+        <scene sceneID="4ir-la-6Yd">
+            <objects>
+                <viewController id="iNz-7z-YRF" customClass="PescatarianRecipeMealsViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RSh-1H-c21">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Guc-gI-rrw">
+                                <rect key="frame" x="183" y="92" width="223" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="KBF-rh-L4r"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="223" id="bJX-9r-C5a"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Breakfast">
+                                    <backgroundConfiguration key="background" image="BreakfastPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="cBR-OE-ohX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZk-Vr-fVy">
+                                <rect key="frame" x="183" y="363" width="223" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="146" id="S0U-Ms-L8m"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="223" id="Skf-vI-AqR"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Starters">
+                                    <backgroundConfiguration key="background" image="StarterPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="C8T-BM-V3o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV3-hL-e7o">
+                                <rect key="frame" x="8" y="745" width="214" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="4qc-7x-yZc"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sides">
+                                    <backgroundConfiguration key="background" image="SidesPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="sGh-Ca-rUc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-Py-35p">
+                                <rect key="frame" x="8" y="511" width="398" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="108" id="E8p-Vz-kxP"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dinner">
+                                    <backgroundConfiguration key="background" image="DinnerPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="hFM-eC-Sun"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jr7-hp-htB">
+                                <rect key="frame" x="8" y="623" width="398" height="118"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="118" id="zVi-vY-KpY"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dessert">
+                                    <backgroundConfiguration key="background" image="DessertPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="urQ-PD-kHu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuD-PO-9yA">
+                                <rect key="frame" x="183" y="229" width="223" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="1cT-xD-6xh"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="223" id="AYq-cv-TC4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Drinks">
+                                    <backgroundConfiguration key="background" image="DrinksPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="Pj1-Qd-bfu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7z-Zj-4yn">
+                                <rect key="frame" x="8" y="92" width="171" height="415"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="417" id="3RF-xR-FFo"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Snacks">
+                                    <backgroundConfiguration key="background" image="SnacksPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="dtf-9e-Thc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaf-rH-wus">
+                                <rect key="frame" x="226" y="745" width="180" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Dlf-gB-qgV"/>
+                                    <constraint firstAttribute="height" constant="116" id="bTJ-G5-eS8"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sauces">
+                                    <backgroundConfiguration key="background" image="SaucesPesc" imageContentMode="scaleAspectFill"/>
+                                    <fontDescription key="titleFontDescription" name="Didot-Bold" family="Didot" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iNz-7z-YRF" eventType="touchUpInside" id="Lgn-r9-GFK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4gQ-3z-G9e"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="b2y-Py-35p" firstAttribute="leading" secondItem="4gQ-3z-G9e" secondAttribute="leading" constant="8" id="07b-5j-kSp"/>
+                            <constraint firstItem="Guc-gI-rrw" firstAttribute="leading" secondItem="k7z-Zj-4yn" secondAttribute="trailing" constant="4" id="0rv-Cy-wc4"/>
+                            <constraint firstItem="Guc-gI-rrw" firstAttribute="top" secondItem="4gQ-3z-G9e" secondAttribute="top" id="1qP-fK-6C7"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="trailing" secondItem="yaf-rH-wus" secondAttribute="trailing" constant="8" id="5RN-He-sjb"/>
+                            <constraint firstItem="QV3-hL-e7o" firstAttribute="top" secondItem="Jr7-hp-htB" secondAttribute="bottom" constant="4" id="AVw-33-UFj"/>
+                            <constraint firstItem="yaf-rH-wus" firstAttribute="leading" secondItem="QV3-hL-e7o" secondAttribute="trailing" constant="4" id="B1X-Dt-bBG"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="trailing" secondItem="NuD-PO-9yA" secondAttribute="trailing" constant="8" id="FnF-s2-6YU"/>
+                            <constraint firstItem="QV3-hL-e7o" firstAttribute="leading" secondItem="4gQ-3z-G9e" secondAttribute="leading" constant="8" id="LBn-6K-Dfs"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="trailing" secondItem="b2y-Py-35p" secondAttribute="trailing" constant="8" id="MmD-TX-Vgz"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="trailing" secondItem="OZk-Vr-fVy" secondAttribute="trailing" constant="8" id="QAs-SO-vkg"/>
+                            <constraint firstItem="OZk-Vr-fVy" firstAttribute="top" secondItem="NuD-PO-9yA" secondAttribute="bottom" constant="4" id="QCc-8v-C8G"/>
+                            <constraint firstItem="OZk-Vr-fVy" firstAttribute="leading" secondItem="k7z-Zj-4yn" secondAttribute="trailing" constant="4" id="Qwv-FB-1cb"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="bottom" secondItem="yaf-rH-wus" secondAttribute="bottom" constant="1" id="V7O-4m-v4S"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="trailing" secondItem="Guc-gI-rrw" secondAttribute="trailing" constant="8" id="Xfg-zx-8Hv"/>
+                            <constraint firstItem="b2y-Py-35p" firstAttribute="top" secondItem="k7z-Zj-4yn" secondAttribute="bottom" constant="4" id="YBA-fR-gf3"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="trailing" secondItem="Jr7-hp-htB" secondAttribute="trailing" constant="8" id="bEH-Io-xUB"/>
+                            <constraint firstItem="k7z-Zj-4yn" firstAttribute="leading" secondItem="4gQ-3z-G9e" secondAttribute="leading" constant="8" id="bLJ-PD-vdr"/>
+                            <constraint firstItem="Jr7-hp-htB" firstAttribute="leading" secondItem="4gQ-3z-G9e" secondAttribute="leading" constant="8" id="cak-bs-iY2"/>
+                            <constraint firstItem="4gQ-3z-G9e" firstAttribute="bottom" secondItem="QV3-hL-e7o" secondAttribute="bottom" constant="1" id="cen-FW-opr"/>
+                            <constraint firstItem="yaf-rH-wus" firstAttribute="top" secondItem="Jr7-hp-htB" secondAttribute="bottom" constant="4" id="fgb-NS-k7W"/>
+                            <constraint firstItem="Jr7-hp-htB" firstAttribute="top" secondItem="b2y-Py-35p" secondAttribute="bottom" constant="4" id="hze-Et-SBz"/>
+                            <constraint firstItem="b2y-Py-35p" firstAttribute="top" secondItem="OZk-Vr-fVy" secondAttribute="bottom" constant="4" id="j1E-ir-0R2"/>
+                            <constraint firstItem="NuD-PO-9yA" firstAttribute="top" secondItem="Guc-gI-rrw" secondAttribute="bottom" constant="4" id="lj9-6Y-ER9"/>
+                            <constraint firstItem="NuD-PO-9yA" firstAttribute="leading" secondItem="k7z-Zj-4yn" secondAttribute="trailing" constant="4" id="sQE-tn-1mX"/>
+                            <constraint firstItem="k7z-Zj-4yn" firstAttribute="top" secondItem="4gQ-3z-G9e" secondAttribute="top" id="wZJ-zk-mkc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pescatarian Recipes" id="ez0-rN-TcS"/>
+                    <connections>
+                        <segue destination="v5e-qN-ZWA" kind="show" identifier="showPescatarianRecipes" id="A8j-BD-BRq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isF-c3-288" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795.6521739130437" y="862.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ceD-5A-k9s"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="BreakfastPesc" width="1700" height="2200"/>
+        <image name="BreakfastVeg" width="1700" height="2200"/>
+        <image name="BreakfastVegan" width="1700" height="2200"/>
+        <image name="DessertPesc" width="1700" height="2200"/>
+        <image name="DessertVeg" width="1700" height="2200"/>
+        <image name="DessertVegan" width="1700" height="2200"/>
+        <image name="DinnerPesc" width="1700" height="2200"/>
+        <image name="DinnerVeg" width="1700" height="2200"/>
+        <image name="DinnerVegan" width="1700" height="2200"/>
+        <image name="DrinksPesc" width="1700" height="2200"/>
+        <image name="DrinksVeg" width="1700" height="2200"/>
+        <image name="DrinksVegan" width="1700" height="1701"/>
+        <image name="PescHomeScreen" width="792" height="612"/>
+        <image name="SaucesPesc" width="1700" height="2200"/>
+        <image name="SaucesVeg" width="1700" height="2200"/>
+        <image name="SaucesVegan" width="1700" height="1693"/>
+        <image name="SidesPesc" width="1700" height="2200"/>
+        <image name="SidesVeg" width="1700" height="1693"/>
+        <image name="SidesVegan" width="1700" height="2200"/>
+        <image name="SnacksPesc" width="1575" height="1673"/>
+        <image name="SnacksVeg" width="1700" height="2200"/>
+        <image name="SnacksVegan" width="1700" height="2200"/>
+        <image name="StarterPesc" width="1700" height="2200"/>
+        <image name="StartersVeg" width="1700" height="2200"/>
+        <image name="StartersVegan" width="1700" height="2200"/>
+        <image name="VeganHomeScreen" width="612" height="792"/>
+        <image name="VegetarianHomeScreen" width="792" height="612"/>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
+        <image name="gradientHomeScreen" width="5120" height="2880"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
