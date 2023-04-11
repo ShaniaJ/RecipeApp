@@ -50,7 +50,6 @@
 		3390288D29DE21A3008F6750 = {
 			isa = PBXGroup;
 			children = (
-				338F172629E3AD7100045D83 /* RecipeListTableViewController.swift */,
 				3390289829DE21A3008F6750 /* RecipeApp */,
 				3390289729DE21A3008F6750 /* Products */,
 			);
@@ -74,6 +73,7 @@
 				3335862329E37A0600B99547 /* PescatarianRecipeMealsViewController.swift */,
 				3335862129E3461E00B99547 /* VegetarianRecipeMealsViewController.swift */,
 				33D51C8529E1DF0A00BC0626 /* VeganRecipeMealsViewController.swift */,
+				338F172629E3AD7100045D83 /* RecipeListTableViewController.swift */,
 				339028A529DE21A5008F6750 /* Assets.xcassets */,
 				339028A729DE21A5008F6750 /* LaunchScreen.storyboard */,
 				339028AA29DE21A5008F6750 /* Info.plist */,
