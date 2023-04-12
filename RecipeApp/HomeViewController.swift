@@ -7,6 +7,11 @@
 
 import UIKit
 
+//FIXME: The welcome back animation only activates when you completely kill the app and then restart, not upon every time you open it from sleeping (putting it in viewDidAppear didn't work)
+
+//TODO: Implement one time welcome screen that asks the user their name and then navigate to this screen (will be my userDefaults requirement hopefully?)
+
+
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var veganRecipeButton: UIButton!
@@ -15,11 +20,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var brownButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
-    let climateFacts = ["Producing livestock, including cattle, goats and sheep, for human consumption is the single largest driver of habitat loss and deforestation worldwide",
-    "14.5% of all human-caused greenhouse gas emissions are attributable to livestock farming",
-    "Meat consumption is linked to an annual carbon dioxide equivalent of 1.1 tons on global average",
-    "Animal farming accounts for 78% of agricultural land worldwide"]
-    var climateFactsDisplayedAlready = [String]()
+    let factsToBeDisplayed = climateChangeFacts
+    var factsDisplayedALready = [String]()
     var currentFact : String = ""
     
     
@@ -45,7 +47,7 @@ class HomeViewController: UIViewController {
         brownButton.layer.masksToBounds = false
         
         //other setup
-        currentFact = climateFacts.randomElement()!
+        currentFact = factsToBeDisplayed.randomElement()!
         factsLabel.text = currentFact
         displayFacts()
         
@@ -103,12 +105,12 @@ class HomeViewController: UIViewController {
     func displayFacts() {
         //randomly traversing through climate facts with a 4 second delay display
         DispatchQueue.global(qos: .background).async {
-            for _ in 0..<(self.climateFacts.count-1) {
+            for _ in 0..<(self.factsToBeDisplayed.count-1) {
                 sleep(4)
-                self.climateFactsDisplayedAlready.append(self.currentFact)
+                self.factsDisplayedALready.append(self.currentFact)
                         DispatchQueue.main.sync {
-                            while (self.climateFactsDisplayedAlready.contains(self.currentFact)) {
-                                self.currentFact = self.climateFacts.randomElement()!
+                            while (self.factsDisplayedALready.contains(self.currentFact)) {
+                                self.currentFact = self.factsToBeDisplayed.randomElement()!
                             }
                             //animating the transition between facts to make the new one fade in
                             UIView.animate(withDuration: 1.3) {
@@ -123,11 +125,7 @@ class HomeViewController: UIViewController {
     
     
     
-    //MARK: - Bugs
-/** 1. The welcome back animation only activates when you completely kill the app and then restart, not upon every time you open it from sleeping
- 
-*/
-    
+  
     
 }
 

@@ -7,6 +7,11 @@
 
 import UIKit
 
+//FIXME: The nav controllers title wont show up when running on my device
+//FIXME: Fix the constraints
+
+//TODO:
+
 protocol VeganRecipeMealsViewControllerDelegate: AnyObject {
     func veganRecipeMealsViewController(_ controller: VeganRecipeMealsViewController, didSelect meal: [String])
 }
@@ -66,10 +71,6 @@ class VeganRecipeMealsViewController: UIViewController {
             }
         }
     
-    //MARK: - Bugs
-/** 1. The nav controllers title wont show up when running on my device
- 2. Fix the constraints...
-*/
-    
+
 
 }

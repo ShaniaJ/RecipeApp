@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3335862229E3461E00B99547 /* VegetarianRecipeMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335862129E3461E00B99547 /* VegetarianRecipeMealsViewController.swift */; };
 		3335862429E37A0600B99547 /* PescatarianRecipeMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335862329E37A0600B99547 /* PescatarianRecipeMealsViewController.swift */; };
+		336B7E0229E6518F00DA8EA5 /* ClimateChangeFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336B7E0129E6518F00DA8EA5 /* ClimateChangeFacts.swift */; };
 		338F172729E3AD7100045D83 /* RecipeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338F172629E3AD7100045D83 /* RecipeListTableViewController.swift */; };
 		3390289A29DE21A3008F6750 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390289929DE21A3008F6750 /* AppDelegate.swift */; };
 		3390289C29DE21A3008F6750 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3390289B29DE21A3008F6750 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		3335862129E3461E00B99547 /* VegetarianRecipeMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetarianRecipeMealsViewController.swift; sourceTree = "<group>"; };
 		3335862329E37A0600B99547 /* PescatarianRecipeMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PescatarianRecipeMealsViewController.swift; sourceTree = "<group>"; };
+		336B7E0129E6518F00DA8EA5 /* ClimateChangeFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateChangeFacts.swift; sourceTree = "<group>"; };
 		338F172629E3AD7100045D83 /* RecipeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListTableViewController.swift; sourceTree = "<group>"; };
 		3390289629DE21A3008F6750 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3390289929DE21A3008F6750 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				339028A729DE21A5008F6750 /* LaunchScreen.storyboard */,
 				339028AA29DE21A5008F6750 /* Info.plist */,
 				339028A229DE21A3008F6750 /* RecipeApp.xcdatamodeld */,
+				336B7E0129E6518F00DA8EA5 /* ClimateChangeFacts.swift */,
 			);
 			path = RecipeApp;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			files = (
 				33D51C8629E1DF0A00BC0626 /* VeganRecipeMealsViewController.swift in Sources */,
 				338F172729E3AD7100045D83 /* RecipeListTableViewController.swift in Sources */,
+				336B7E0229E6518F00DA8EA5 /* ClimateChangeFacts.swift in Sources */,
 				3335862429E37A0600B99547 /* PescatarianRecipeMealsViewController.swift in Sources */,
 				3390289E29DE21A3008F6750 /* HomeViewController.swift in Sources */,
 				3390289A29DE21A3008F6750 /* AppDelegate.swift in Sources */,

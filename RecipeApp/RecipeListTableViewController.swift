@@ -5,15 +5,17 @@
 //  Created by Shania on 4/9/23.
 //
 
+
 import UIKit
+
+//FIXME:  The back button says back when accessing from veg & pesc recipes, but vegan for vegan recipes
+
+//TODO:
+
 
 class RecipeListTableViewController: UITableViewController, VeganRecipeMealsViewControllerDelegate, VegetarianRecipeMealsViewControllerDelegate, PescatarianRecipeMealsViewControllerDelegate {
     
-    @IBOutlet weak var recipeImg: UIImage!
-    @IBOutlet weak var recipeTitleLabel: UILabel!
-    @IBOutlet weak var cookingTimeLabel: UILabel!
-    @IBOutlet weak var servingSizeLabel: UILabel!
-    
+
     var dietType: String!  //Note: This would be something like "Pescatarian Recipes", titlecase with a space
     var mealtype: String!  //Note: This would be something like dinner, lowercase and no whitespace
     let testrecipes = ["chicken parmesan","lasagna","pizza","tortellini","stuffed shells","spaghetti and meatballs","chicken alfredo","baked ziti","beef stroganoff","chicken tetrazzini","enchiladas","nacho bar", "fajitas", "burritos","quesadillas","taco salad", "BLT","melts","philly cheese steak", "French dip","sloppy joes","hamburgers","loose meat","BBQ pulled pork","BBQ pulled chicken","grilled chicken","egg and tomato","burgers","panini","monte cristo","fried chicken","bratwurst","gyros","buffalo chicken sandwiches"]
@@ -59,75 +61,48 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return testrecipes.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "recipeCell",
+            for: indexPath)
+        
+        let recipeTitlelabel = cell.viewWithTag(1) as! UILabel
+        let minslabel = cell.viewWithTag(2) as! UILabel
+        let servingSizelabel = cell.viewWithTag(3) as! UILabel
+        
+        for index in 0..<testrecipes.count {
+            if indexPath.row == index {
+                recipeTitlelabel.text = testrecipes.randomElement()!
+                let minsSelected = testMins.randomElement()!
+                let minsText = (minsSelected == "1 hour") ? "" : "mins"
+                minslabel.text = "Ready in \(minsSelected) \(minsText)"
+                servingSizelabel.text = "Serves \(Int.random(in: 1...4))"
+            }
+        }
+        
+        return cell
+    }
+    
     
     
     // MARK: - Table View Delegate
-    
-    
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func tableView(
+      _ tableView: UITableView,
+      didSelectRowAt indexPath: IndexPath
+    ) {
+      tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation
 
     
 
-    
-    //MARK: - Bugs
-/** 1. The back button says back when accessing from veg & pesc recipes, but vegan for vegan recipes
-*/
     
 
 }
