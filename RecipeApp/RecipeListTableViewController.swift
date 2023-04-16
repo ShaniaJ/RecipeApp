@@ -10,7 +10,7 @@ import UIKit
 
 //FIXME:  The back button says back when accessing from veg & pesc recipes, but vegan for vegan recipes
 
-//TODO:
+
 
 
 class RecipeListTableViewController: UITableViewController, VeganRecipeMealsViewControllerDelegate, VegetarianRecipeMealsViewControllerDelegate, PescatarianRecipeMealsViewControllerDelegate {
@@ -47,8 +47,6 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         print("Recived diet : \(dietType ?? "none")")
         print("Recived meal : \(mealtype ?? "none") ")
     }
-    
-    
     
     
     func retrieveDietAndMeal(_ info:  [String]) {

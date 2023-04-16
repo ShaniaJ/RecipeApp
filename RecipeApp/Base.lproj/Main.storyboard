@@ -9,10 +9,72 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Initial First Name View Controller-->
+        <scene sceneID="rx9-st-LpA">
+            <objects>
+                <viewController storyboardIdentifier="firstName" id="oKu-zj-WuM" customClass="InitialFirstNameViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tr4-U1-dPw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gradientHomeScreen" translatesAutoresizingMaskIntoConstraints="NO" id="MuB-qQ-nFt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="461"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi there" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-rG-2rE">
+                                <rect key="frame" x="0.0" y="197" width="414" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What's your name?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vi-qh-kIE">
+                                <rect key="frame" x="0.0" y="240" width="414" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Didot-Bold" family="Didot" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MfM-RP-AdF">
+                                <rect key="frame" x="77" y="378" width="205" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.81960785390000002" green="0.89803922179999995" blue="0.62352943419999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIg-U8-0Gc">
+                                <rect key="frame" x="297" y="384" width="40" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="chevron.right" catalog="system">
+                                    <backgroundConfiguration key="background" cornerRadius="50"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.65882354970000001" green="0.80392158030000005" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextButtonClicked" destination="oKu-zj-WuM" eventType="touchUpInside" id="6Tm-f5-Q2B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pQU-2b-6Ag"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="L2F-Yg-13q"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="MfM-RP-AdF" id="rtt-0j-Xcl"/>
+                        <outlet property="nextButton" destination="xIg-U8-0Gc" id="6Wq-NV-aRJ"/>
+                        <segue destination="OvK-ov-Hyb" kind="show" identifier="segueToHomeScreen" id="0uz-73-H6X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YF4-4B-1lZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="-589"/>
+        </scene>
         <!--Home-->
         <scene sceneID="Sda-w8-Kqw">
             <objects>
-                <viewController title="Home" id="OvK-ov-Hyb" customClass="HomeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeScreen" title="Home" id="OvK-ov-Hyb" customClass="HomeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mKP-NO-IV5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,20 +225,21 @@
         <!--Navigation Controller-->
         <scene sceneID="aSM-eH-7hN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lr5-ZX-9lZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navController" automaticallyAdjustsScrollViewInsets="NO" id="Lr5-ZX-9lZ" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="J2t-BS-oZi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JfT-zv-IBr">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="OvK-ov-Hyb" kind="relationship" relationship="rootViewController" id="4CQ-qf-1Lo"/>
+                        <segue destination="oKu-zj-WuM" kind="relationship" relationship="rootViewController" id="EuU-g7-9tk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvN-dZ-DYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128.98550724637681" y="133.92857142857142"/>
+            <point key="canvasLocation" x="207" y="134"/>
         </scene>
         <!--Vegan Recipes-->
         <scene sceneID="ZZi-1M-Asp">
@@ -540,7 +603,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZk-Vr-fVy">
-                                <rect key="frame" x="183" y="363" width="223" height="144"/>
+                                <rect key="frame" x="183" y="363" width="223" height="146"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="146" id="S0U-Ms-L8m"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="223" id="Skf-vI-AqR"/>
@@ -556,7 +619,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV3-hL-e7o">
-                                <rect key="frame" x="8" y="745" width="214" height="116"/>
+                                <rect key="frame" x="8" y="747" width="214" height="116"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="4qc-7x-yZc"/>
                                 </constraints>
@@ -571,7 +634,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-Py-35p">
-                                <rect key="frame" x="8" y="511" width="398" height="108"/>
+                                <rect key="frame" x="8" y="513" width="398" height="108"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="108" id="E8p-Vz-kxP"/>
                                 </constraints>
@@ -586,7 +649,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jr7-hp-htB">
-                                <rect key="frame" x="8" y="623" width="398" height="118"/>
+                                <rect key="frame" x="8" y="625" width="398" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="118" id="zVi-vY-KpY"/>
                                 </constraints>
@@ -617,7 +680,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7z-Zj-4yn">
-                                <rect key="frame" x="8" y="92" width="171" height="415"/>
+                                <rect key="frame" x="8" y="92" width="171" height="417"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="417" id="3RF-xR-FFo"/>
                                 </constraints>
@@ -632,7 +695,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaf-rH-wus">
-                                <rect key="frame" x="226" y="745" width="180" height="116"/>
+                                <rect key="frame" x="226" y="747" width="180" height="116"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Dlf-gB-qgV"/>
                                     <constraint firstAttribute="height" constant="116" id="bTJ-G5-eS8"/>
@@ -737,6 +800,7 @@
                                         <constraint firstItem="e96-AW-Xyc" firstAttribute="top" secondItem="6F4-kc-f4X" secondAttribute="bottom" constant="2" id="DWd-71-37U"/>
                                         <constraint firstAttribute="trailing" secondItem="MEP-z0-xS6" secondAttribute="trailing" constant="10" id="Fx6-vI-nng"/>
                                         <constraint firstItem="6F4-kc-f4X" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SGz-Fx-dIh" secondAttribute="trailingMargin" id="Reh-S0-KWJ"/>
+                                        <constraint firstItem="MEP-z0-xS6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s7Z-VE-EcQ" secondAttribute="trailing" constant="8" symbolic="YES" id="TXH-CV-8lY"/>
                                         <constraint firstItem="6F4-kc-f4X" firstAttribute="leading" secondItem="s7Z-VE-EcQ" secondAttribute="trailing" constant="2" id="U9C-qE-1m8"/>
                                         <constraint firstItem="s7Z-VE-EcQ" firstAttribute="leading" secondItem="SGz-Fx-dIh" secondAttribute="leading" constant="20" symbolic="YES" id="UZz-E1-d3j"/>
                                         <constraint firstItem="MEP-z0-xS6" firstAttribute="bottom" secondItem="s7Z-VE-EcQ" secondAttribute="bottom" id="WUC-rD-uyc"/>
@@ -790,6 +854,7 @@
         <image name="StartersVegan" width="1700" height="2200"/>
         <image name="VeganHomeScreen" width="612" height="792"/>
         <image name="VegetarianHomeScreen" width="792" height="612"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="gradientHomeScreen" width="5120" height="2880"/>
         <systemColor name="secondaryLabelColor">

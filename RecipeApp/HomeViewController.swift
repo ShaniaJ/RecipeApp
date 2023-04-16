@@ -8,11 +8,12 @@
 import UIKit
 
 //FIXME: The welcome back animation only activates when you completely kill the app and then restart, not upon every time you open it from sleeping (putting it in viewDidAppear didn't work)
+//FIXME: Change welcome back labels x coordinates conditionally 
 
-//TODO: Implement one time welcome screen that asks the user their name and then navigate to this screen (will be my userDefaults requirement hopefully?)
 
 
-class HomeViewController: UIViewController {
+
+class HomeViewController: UIViewController, InitialFirstNameViewControllerDelegate {
 
     @IBOutlet weak var veganRecipeButton: UIButton!
     @IBOutlet weak var factsLabel: UILabel!
@@ -20,24 +21,36 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var brownButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var firstName: String!
     let factsToBeDisplayed = climateChangeFacts
-    var factsDisplayedALready = [String]()
+    var factsDisplayedAlready = [String]()
     var currentFact : String = ""
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //slide in animation for welcome back label
         UIView.animate(withDuration: 0.90) {
               self.welcomeBackLabel.center.x += (self.view.bounds.width)
         }
+        //welcome back label text toggle
+        if UserDefaults.standard.bool(forKey: "isFirstTime") {
+            welcomeBackLabel.text = "Welcome,"
+            UserDefaults.standard.set(false, forKey: "isFirstTime")
+        } else {
+            welcomeBackLabel.text = "Welcome back,"
+        }
         
-        //Transparent animation for name label
+        nameLabel.text = UserDefaults.standard.string(forKey: "firstName")
+        
+        //Transparent animation for name label & value
         UIView.animate(withDuration: 1.6) {
             self.nameLabel.alpha = 0.1
             self.nameLabel.alpha = 1.0
         }
+        
         
         //Creating shadow effect for fact button
         brownButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
@@ -59,7 +72,7 @@ class HomeViewController: UIViewController {
         
         //initially move welcome back label off screen for animation
         welcomeBackLabel.center.x -= (view.bounds.width)
-        
+  
         //Hiding nav bar exclusively for home screen
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -67,11 +80,11 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         //Hiding nav bar exclusively for home screen
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
@@ -107,9 +120,9 @@ class HomeViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             for _ in 0..<(self.factsToBeDisplayed.count-1) {
                 sleep(4)
-                self.factsDisplayedALready.append(self.currentFact)
+                self.factsDisplayedAlready.append(self.currentFact)
                         DispatchQueue.main.sync {
-                            while (self.factsDisplayedALready.contains(self.currentFact)) {
+                            while (self.factsDisplayedAlready.contains(self.currentFact)) {
                                 self.currentFact = self.factsToBeDisplayed.randomElement()!
                             }
                             //animating the transition between facts to make the new one fade in
@@ -123,7 +136,12 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - InitialViewController Delegate
+    func initialFirstNameViewController(_ controller: InitialFirstNameViewController, didAcquireName name: String) {
+        firstName = name
+        UserDefaults.standard.set(firstName, forKey: "firstName")
+        print("delegate function")
+    }
     
   
     
