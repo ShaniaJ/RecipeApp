@@ -7,8 +7,9 @@
 
 import UIKit
 
-//FIXME: The welcome back animation only activates when you completely kill the app and then restart, not upon every time you open it from sleeping (putting it in viewDidAppear didn't work)
-//FIXME: Change welcome back labels x coordinates conditionally 
+
+//FIXME: Welcome label should change to welcome back the second time they open the app (without having to kill it) how would I check for this?
+//FIXME: Change welcome back labels x coordinates conditionally - define its constraints programmatically
 
 
 
@@ -30,6 +31,8 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let testDietType = "Pescatarian Recipes"
+//        print(testDietType.components(separatedBy: " ").first!.lowercased())
 
         //slide in animation for welcome back label
         UIView.animate(withDuration: 0.90) {
@@ -72,6 +75,7 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
         
         //initially move welcome back label off screen for animation
         welcomeBackLabel.center.x -= (view.bounds.width)
+        
   
         //Hiding nav bar exclusively for home screen
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -79,8 +83,7 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,6 +91,9 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
         //Hiding nav bar exclusively for home screen
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+ 
+
     
     
     func toggleButtonOpacity(for btn: UIButton) {
@@ -140,10 +146,11 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     func initialFirstNameViewController(_ controller: InitialFirstNameViewController, didAcquireName name: String) {
         firstName = name
         UserDefaults.standard.set(firstName, forKey: "firstName")
-        print("delegate function")
     }
     
   
     
 }
+
+
 

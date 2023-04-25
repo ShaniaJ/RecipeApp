@@ -52,7 +52,7 @@ class InitialFirstNameViewController: UIViewController {
     @IBAction func nextButtonClicked() {
         UserDefaults.standard.set(true, forKey: "buttonClickedBefore")
         UserDefaults.standard.set(true, forKey: "isFirstTime")
-        if nameTextField.text != nil || nameTextField.text != "" {
+        if nameTextField.text != nil && nameTextField.text != "" {
             firstName = nameTextField.text!
             isFirstTime = UserDefaults.standard.bool(forKey: "isFirstTime")
             performSegue(withIdentifier: "segueToHomeScreen", sender: nil)

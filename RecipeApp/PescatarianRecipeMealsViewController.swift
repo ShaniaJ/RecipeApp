@@ -10,7 +10,6 @@ import UIKit
 //FIXME: The nav controllers title wont show up when running on my device
 //FIXME: Fix the constraints
 
-//TODO:
 
 
 protocol PescatarianRecipeMealsViewControllerDelegate: AnyObject {
