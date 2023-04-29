@@ -8,8 +8,8 @@
 
 import UIKit
 
-//FIXME:  The back button says back when accessing from veg & pesc recipes, but vegan for vegan recipes
-//TODO: Ensure there are no duplicates
+//FIXME: The back button says 'back' when accessing from veg & pesc recipes screen, but vegan for vegan recipes
+//TODO: Ensure there are no duplicate recipes
 //TODO: Show all results
 //TODO: Create loading screen
 
@@ -17,23 +17,25 @@ import UIKit
 
 class RecipeListTableViewController: UITableViewController, VeganRecipeMealsViewControllerDelegate, VegetarianRecipeMealsViewControllerDelegate, PescatarianRecipeMealsViewControllerDelegate {
     
-
+    
     var dietType: String!  //Note: This would be something like "Pescatarian Recipes", titlecase with a space
-    var mealtype: String!  //Note: This would be something like dinner, lowercase and no whitespace
+    var mealtype: String!  //Note: This would be something like "dinner", lowercase and no whitespace
     var searchResults = [Recipe]()
-    
-    
-    
+    var downloadTask: URLSessionDownloadTask?
 
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         gatherSearchResults([dietType,mealtype])
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    
     
     // MARK: - Vegan/Vegetarian/Pescatarian Recipe Meals ViewController Delegates
     func veganRecipeMealsViewController(_ controller: VeganRecipeMealsViewController, didSelect meal: [String]) {
@@ -64,7 +66,7 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
     
     
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
@@ -77,13 +79,17 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         let recipeTitlelabel = cell.viewWithTag(1) as! UILabel
         let minslabel = cell.viewWithTag(2) as! UILabel
         let servingSizelabel = cell.viewWithTag(3) as! UILabel
-        //let imageView = cell.viewWithTag(4) as! UIImageView
+        let imageView = cell.viewWithTag(4) as! UIImageView
         
         for i in 0..<searchResults.count {
             if indexPath.row == i {
                 recipeTitlelabel.text = searchResults[i].title
                 minslabel.text = "Ready in \(searchResults[i].readyInMinutes) minutes"
                 servingSizelabel.text = "Serves \(searchResults[i].servings)"
+                let imgUrl = URL(string: searchResults[i].imgUrl)
+                if let imgUrl {
+                    downloadTask = imageView.loadImage(url: imgUrl)
+                }
             }
         }
         
@@ -94,13 +100,13 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
     
     // MARK: - Table View Delegate
     override func tableView(
-      _ tableView: UITableView,
-      didSelectRowAt indexPath: IndexPath
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
     ) {
-      tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-
-
+    
+    
     // MARK: - Helper Methods
     
     func formatDietType(_ diet: String) -> String {
@@ -147,103 +153,195 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         let diet = formatDietType(searchParameters[0])
         let meal = formatMealType(searchParameters[1])
         let urlString = String(
-        format: "https://api.spoonacular.com/recipes/complexSearch?apiKey=7fa065a8ced64226855f1b8962e4a335&diet=%@&type=%@&instructionsRequired=true&addRecipeInformation=true&sort=random&number=100",
-        diet,
-        meal)
+            format: "https://api.spoonacular.com/recipes/complexSearch?apiKey=053be10d85bb42498c0223fb6593cbac&diet=%@&type=%@&instructionsRequired=true&addRecipeInformation=true&sort=random&number=100",
+            diet,
+            meal)
         let url = URL(string: urlString)
         return url!
     }
-
-    func performRecipeListRequest(with url: URL) -> Data? {
-      do {
-       return try Data(contentsOf: url)
-      } catch {
-       print("Download Error: \(error.localizedDescription)")
-       showNetworkError()
-       return nil
-      }
-    }
     
     func parse(data: Data) -> [Recipe] {
-      do {
-        let decoder = JSONDecoder()
-        let result = try decoder.decode(
-          RecipesArray.self, from: data)
-        return result.results
-      } catch {
-        print("JSON Error: \(error)")
-        return []
-      }
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(
+                RecipesArray.self, from: data)
+            return result.results
+        } catch {
+            print("JSON Error: \(error)")
+            return []
+        }
     }
     
     func showNetworkError() {
-      let alert = UIAlertController(
-        title: "Whoops...",
-        message: "There was an error accessing the recipes." +
-        " Please try again.",
-        preferredStyle: .alert)
-      
-      let action = UIAlertAction(
-        title: "OK", style: .default, handler: nil)
-      alert.addAction(action)
-      present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(
+            title: "Whoops...",
+            message: "There was an error accessing the recipes." +
+            " Please try again.",
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(
+            title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
-
-
+    
+    //*************************************************************************************************
+    
     func gatherSearchResults(_ parameters: [String]) {
-        var results = [Recipe]()
-        let queue = DispatchQueue.global()
-        queue.async {
-            if parameters[0] == "Vegan Recipes" {
-                    let url = self.recipeUrl(searchParameters: parameters)
-                    print("url is \(url)")
-                    
-                    if let data = self.performRecipeListRequest(with: url) {
-                        results = self.parse(data: data)
-                    }
-            } else if parameters[0] == "Vegetarian Recipes" {
-                    let url1 = self.recipeUrl(searchParameters: parameters)
-                    let url2 = self.recipeUrl(searchParameters: ["Vegan Recipes",parameters[1]])
-                    print("url1 is \(url1)")
-                    print("url2 is \(url2)")
-                    
-                    if let data1 = self.performRecipeListRequest(with: url1) {
-                        results = self.parse(data: data1)
-                        if let data2 = self.performRecipeListRequest(with: url2) {
-                            results += self.parse(data: data2)
+        if parameters[0] == "Vegan Recipes" {
+            let url = self.recipeUrl(searchParameters: parameters)
+            print("url is \(url)")
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: url) {data, response, error in
+                if let error = error {
+                    print("Failure! \(error.localizedDescription)")
+                } else if let httpResponse = response as? HTTPURLResponse,
+                          httpResponse.statusCode == 200 {
+                    if let data = data {
+                        self.searchResults = self.parse(data: data)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
                         }
+                        return
                     }
-            } else { //parameters[0] = "Pescatarian Recipes"
-                    let url1 = self.recipeUrl(searchParameters: parameters)
-                    let url2 = self.recipeUrl(searchParameters: ["Vegan Recipes",parameters[1]])
-                    let url3 = self.recipeUrl(searchParameters: ["Vegetarian Recipes",parameters[1]])
-                    print("url1 is \(url1)")
-                    print("url2 is \(url2)")
-                    print("url3 is \(url3)")
-                    
-                    if let data1 = self.performRecipeListRequest(with: url1) {
-                        results = self.parse(data: data1)
-                        if let data2 = self.performRecipeListRequest(with: url2) {
-                            results += self.parse(data: data2)
-                        }
-                        if let data3 = self.performRecipeListRequest(with: url3) {
-                            results += self.parse(data: data3)
-                        }
-                    }
+                } else {
+                    print("Failure! \(response!)")
+                }
             }
-            self.searchResults = results
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            dataTask.resume()
+        } else if parameters[0] == "Vegetarian Recipes" {
+            let url1 = self.recipeUrl(searchParameters: parameters)
+            let url2 = self.recipeUrl(searchParameters: ["Vegan Recipes",parameters[1]])
+            print("url1 is \(url1)")
+            print("url2 is \(url2)")
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: url1) {data, response, error in
+                if let error = error {
+                    print("Failure! \(error.localizedDescription)")
+                } else if let httpResponse = response as? HTTPURLResponse,
+                          httpResponse.statusCode == 200 {
+                    if let data = data {
+                        self.searchResults = self.parse(data: data)
+                        let dataTask2 = session.dataTask(with: url2) {data, response, error in
+                            if let error = error {
+                                print("Failure! \(error.localizedDescription)")
+                            } else if let httpResponse = response as? HTTPURLResponse,
+                                      httpResponse.statusCode == 200 {
+                                if let data = data {
+                                    self.searchResults += self.parse(data: data)
+                                    DispatchQueue.main.async {
+                                      self.tableView.reloadData()
+                                    }
+                                    return
+                                }
+                            } else {
+                                print("Failure! \(response!)")
+                            }
+                        }
+                        dataTask2.resume()
+                        return
+                    }
+                } else {
+                    print("Failure! \(response!)")
+                }
             }
-            return
+            dataTask.resume()
+            
+        } else { //parameters[0] = "Pescatarian Recipes"
+            let url1 = self.recipeUrl(searchParameters: parameters)
+            let url2 = self.recipeUrl(searchParameters: ["Vegan Recipes",parameters[1]])
+            let url3 = self.recipeUrl(searchParameters: ["Vegetarian Recipes",parameters[1]])
+            print("url1 is \(url1)")
+            print("url2 is \(url2)")
+            print("url3 is \(url3)")
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: url1) {data, response, error in
+                if let error = error {
+                    print("Failure \(error.localizedDescription)")
+                } else if let httpResponse = response as? HTTPURLResponse,
+                          httpResponse.statusCode == 200 {
+                    if let data = data {
+                        self.searchResults = self.parse(data: data)
+                        let dataTask2 = session.dataTask(with: url2) {data, response, error in
+                            if let error = error {
+                                print("Failure \(error.localizedDescription)")
+                            } else if let httpResponse = response as? HTTPURLResponse,
+                                      httpResponse.statusCode == 200 {
+                                if let data = data {
+                                    self.searchResults += self.parse(data: data)
+                                    let dataTask3 = session.dataTask(with: url3) {data, response, error in
+                                        if let error = error {
+                                            print("Failure \(error.localizedDescription)")
+                                        } else if let httpResponse = response as? HTTPURLResponse,
+                                                  httpResponse.statusCode == 200 {
+                                            if let data = data {
+                                                self.searchResults += self.parse(data: data)
+                                                DispatchQueue.main.async {
+                                                    self.tableView.reloadData()
+                                                }
+                                                return
+                                            }
+                                        } else {
+                                            print("Failure! \(response!)")
+                                        }
+                                    }
+                                    dataTask3.resume()
+                                    return
+                                }
+                            } else {
+                                print("Failure! \(response!)")
+                            }
+                        }
+                        dataTask2.resume()
+                        return
+                    }
+                } else {
+                    print("Failure! \(response!)")
+                }
+            }
+            dataTask.resume()
         }
+        
+        //************************************************************************************************
+        
+        // MARK: - Navigation
+        
+        
+        
+        
+        
     }
-
-
-    // MARK: - Navigation
-
-    
-
-    
-
 }
+
+extension UIImageView {
+  func loadImage(url: URL) -> URLSessionDownloadTask {
+    let session = URLSession.shared
+    let downloadTask = session.downloadTask(with: url) {
+      [weak self] url, _, error in
+      if error == nil, let url = url,
+        let data = try? Data(contentsOf: url),
+        let image = UIImage(data: data) {
+        DispatchQueue.main.async {
+          if let weakSelf = self {
+            weakSelf.image = image
+          }
+        }
+      }
+    }
+    downloadTask.resume()
+    return downloadTask
+  }
+}
+
+
+
+//var stateLock = NSLock()
+//func setFullName(firstName: String, lastName: String) {
+//    stateLock.lock()
+//    self.firstName = firstName
+//    self.lastName = lastName
+//    stateLock.unlock()
+//}

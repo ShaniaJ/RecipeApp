@@ -8,10 +8,6 @@
 import UIKit
 
 
-//FIXME: Welcome label should change to welcome back the second time they open the app (without having to kill it) how would I check for this?
-//FIXME: Change welcome back labels x coordinates conditionally - define its constraints programmatically
-
-
 
 
 class HomeViewController: UIViewController, InitialFirstNameViewControllerDelegate {
@@ -21,6 +17,8 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     @IBOutlet weak var welcomeBackLabel: UILabel!
     @IBOutlet weak var brownButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    
     
     var firstName: String!
     let factsToBeDisplayed = climateChangeFacts
@@ -31,20 +29,29 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let testDietType = "Pescatarian Recipes"
-//        print(testDietType.components(separatedBy: " ").first!.lowercased())
 
-        //slide in animation for welcome back label
+//        slide in animation for welcome back label
         UIView.animate(withDuration: 0.90) {
               self.welcomeBackLabel.center.x += (self.view.bounds.width)
         }
         //welcome back label text toggle
         if UserDefaults.standard.bool(forKey: "isFirstTime") {
+            leadingConstraint.constant = 40
             welcomeBackLabel.text = "Welcome,"
             UserDefaults.standard.set(false, forKey: "isFirstTime")
-        } else {
-            welcomeBackLabel.text = "Welcome back,"
         }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.appMovedToBackground),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.appMovedToForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil)
         
         nameLabel.text = UserDefaults.standard.string(forKey: "firstName")
         
@@ -83,7 +90,7 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -148,7 +155,27 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
         UserDefaults.standard.set(firstName, forKey: "firstName")
     }
     
-  
+    
+    //MARK: Helper Methods
+    @objc func appMovedToBackground() {
+        welcomeBackLabel.text = "Welcome back,"
+        leadingConstraint.constant = 20
+        }
+    
+    @objc func appMovedToForeground() {
+        welcomeBackLabel.center.x -= (view.bounds.width)
+        //slide in animation for welcome back label
+        UIView.animate(withDuration: 0.90) {
+              self.welcomeBackLabel.center.x += (self.view.bounds.width)
+        }
+        
+        //Transparent animation for name label & value
+        UIView.animate(withDuration: 1.6) {
+            self.nameLabel.alpha = 0.1
+            self.nameLabel.alpha = 1.0
+        }
+    }
+
     
 }
 

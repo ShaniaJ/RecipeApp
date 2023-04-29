@@ -8,7 +8,6 @@
 import UIKit
 
 
-
 protocol InitialFirstNameViewControllerDelegate: AnyObject {
     func initialFirstNameViewController(_ controller: InitialFirstNameViewController, didAcquireName name: String)
 }
@@ -29,8 +28,8 @@ class InitialFirstNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let myColor = UIColor(red: 227.0/255.0, green: 240.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+        var myColor = UIColor()
+        myColor = myColor.generateRGBColor(227,240,199)
         nameTextField.layer.borderColor = myColor.cgColor
         nameTextField.layer.borderWidth = 1.7
         nameTextField.layer.cornerRadius = 5
@@ -67,12 +66,18 @@ class InitialFirstNameViewController: UIViewController {
         }
         
     }
-    
-    
-    
-    
-    
 
-  
 
+}
+
+
+extension UIColor {
+    func generateRGBColor(_ r: Int,_ g: Int,_ b: Int) -> UIColor {
+        let redValue : CGFloat = CGFloat(r)/255.0
+        let greenValue : CGFloat = CGFloat(g)/255.0
+        let blueValue : CGFloat = CGFloat(b)/255.0
+        let color = UIColor(red: redValue, green:greenValue, blue: blueValue, alpha: 1.0)
+        
+        return color
+    }
 }

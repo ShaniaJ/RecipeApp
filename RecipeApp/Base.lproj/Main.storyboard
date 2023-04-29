@@ -194,11 +194,11 @@
                             <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="8aT-Tl-ZJq" secondAttribute="trailing" constant="12" id="GWN-db-b98"/>
                             <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="VvS-7j-2i6" secondAttribute="trailing" constant="283" id="J8l-SD-XNz"/>
                             <constraint firstItem="yPF-vZ-yvf" firstAttribute="top" secondItem="JMJ-gd-wlf" secondAttribute="top" constant="5" id="Jfq-qO-MNC"/>
+                            <constraint firstItem="yPF-vZ-yvf" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="20" id="LKd-2Z-kii"/>
                             <constraint firstItem="X2V-Bk-sPh" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="12" id="MSU-7V-77F"/>
                             <constraint firstItem="gqB-kz-rFG" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="127" id="Pmu-i9-wlK"/>
                             <constraint firstItem="k3x-bD-FXf" firstAttribute="centerX" secondItem="mKP-NO-IV5" secondAttribute="centerX" id="Qpd-Yg-NQk"/>
                             <constraint firstItem="gqB-kz-rFG" firstAttribute="centerX" secondItem="k3x-bD-FXf" secondAttribute="centerX" id="Qqz-h4-xAi"/>
-                            <constraint firstItem="yPF-vZ-yvf" firstAttribute="leading" secondItem="JMJ-gd-wlf" secondAttribute="leading" constant="20" id="RgG-q5-7xX"/>
                             <constraint firstItem="VvS-7j-2i6" firstAttribute="top" secondItem="y09-ei-pCr" secondAttribute="bottom" constant="8" symbolic="YES" id="Wm8-wa-aTb"/>
                             <constraint firstItem="JMJ-gd-wlf" firstAttribute="trailing" secondItem="NGo-PO-h4N" secondAttribute="trailing" constant="12" id="XxA-bF-dBk"/>
                             <constraint firstItem="gqB-kz-rFG" firstAttribute="centerY" secondItem="k3x-bD-FXf" secondAttribute="centerY" id="Zn9-OR-PGr"/>
@@ -213,6 +213,7 @@
                     <connections>
                         <outlet property="brownButton" destination="k3x-bD-FXf" id="sq3-2E-cQ9"/>
                         <outlet property="factsLabel" destination="gqB-kz-rFG" id="osF-KE-Tk8"/>
+                        <outlet property="leadingConstraint" destination="LKd-2Z-kii" id="YRg-6H-vk7"/>
                         <outlet property="nameLabel" destination="y09-ei-pCr" id="LfC-wC-AoJ"/>
                         <outlet property="veganRecipeButton" destination="NGo-PO-h4N" id="j0Q-OS-aa8"/>
                         <outlet property="welcomeBackLabel" destination="yPF-vZ-yvf" id="foN-Cc-oHl"/>
@@ -806,6 +807,9 @@
                                         <constraint firstItem="e96-AW-Xyc" firstAttribute="centerX" secondItem="6F4-kc-f4X" secondAttribute="centerX" id="w4W-lo-nW5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ouV-EB-mF5" kind="show" id="Zjb-hg-xht"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -821,9 +825,25 @@
             </objects>
             <point key="canvasLocation" x="1037.68115942029" y="1600.4464285714284"/>
         </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="b1n-2g-wzt">
+            <objects>
+                <viewController id="ouV-EB-mF5" customClass="RecipeViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0DS-Xf-S2D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9Qo-s6-plD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7sw-r0-xkc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NHH-eD-kFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="2299"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A8j-BD-BRq"/>
+        <segue reference="ceD-5A-k9s"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BreakfastPesc" width="1700" height="2200"/>
@@ -858,6 +878,9 @@
         <image name="gradientHomeScreen" width="5120" height="2880"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
