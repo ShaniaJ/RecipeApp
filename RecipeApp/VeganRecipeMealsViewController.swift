@@ -7,10 +7,6 @@
 
 import UIKit
 
-//FIXME: The nav controllers title wont show up when running on my device
-//FIXME: Fix the constraints
-
-
 
 protocol VeganRecipeMealsViewControllerDelegate: AnyObject {
     func veganRecipeMealsViewController(_ controller: VeganRecipeMealsViewController, didSelect meal: [String])
@@ -28,18 +24,11 @@ class VeganRecipeMealsViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//        self.navigationController?.navigationBar.tintColor = .black
-//
-//        self.title = "Vegan Recipes"
-//        *self.navigationController?.navigationBar.topItem?.title = "Vegan Recipes"
-//        self.parent?.title = "Vegan Recipes"
-//        self.tabBarController?.navigationItem.title = "Vegan Recipes"
-//        self.navigationItem.title = "Vegan Recipes"
-//        self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.isToolbarHidden = false
-          
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+
+        self.title = "Vegan Recipes"
      
     }
 

@@ -48,6 +48,7 @@ class InitialFirstNameViewController: UIViewController {
         //hiding nav bar
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
     @IBAction func nextButtonClicked() {
         UserDefaults.standard.set(true, forKey: "buttonClickedBefore")
         UserDefaults.standard.set(true, forKey: "isFirstTime")

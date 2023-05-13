@@ -7,9 +7,6 @@
 
 import UIKit
 
-//FIXME: The nav controllers title wont show up when running on my device
-//FIXME: Fix the constraints
-
 
 
 protocol PescatarianRecipeMealsViewControllerDelegate: AnyObject {
@@ -53,7 +50,6 @@ class PescatarianRecipeMealsViewController: UIViewController {
             self.delegate = controller
             
             delegate?.pescatarianRecipeMealsViewController(self, didSelect: dietTypeAndMeal)
-
         }
     }
     

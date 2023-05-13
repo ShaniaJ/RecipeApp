@@ -6,22 +6,26 @@
 //
 
 
+
+//053be10d85bb42498c0223fb6593cbac - main API key
+//f6cf877f8db046999cbd145430156c8d - second API key
+
 import UIKit
 
-//FIXME: The back button says 'back' when accessing from veg & pesc recipes screen, but vegan for vegan recipes
-//TODO: Ensure there are no duplicate recipes
-//TODO: Show all results
-//TODO: Create loading screen
 
-
+protocol RecipeListTableViewControllerDelegate: AnyObject {
+    func recipeListTableViewController(_ controller: RecipeListTableViewController, didSelectID ID: String)
+    func recipeListTableViewController(_ controller: RecipeListTableViewController, currentSearchCategories categories: [String])
+}
 
 class RecipeListTableViewController: UITableViewController, VeganRecipeMealsViewControllerDelegate, VegetarianRecipeMealsViewControllerDelegate, PescatarianRecipeMealsViewControllerDelegate {
-    
     
     var dietType: String!  //Note: This would be something like "Pescatarian Recipes", titlecase with a space
     var mealtype: String!  //Note: This would be something like "dinner", lowercase and no whitespace
     var searchResults = [Recipe]()
     var downloadTask: URLSessionDownloadTask?
+    weak var delegate: RecipeListTableViewControllerDelegate?
+    var selectedRecipeID: String?
 
     
     
@@ -40,20 +44,14 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
     // MARK: - Vegan/Vegetarian/Pescatarian Recipe Meals ViewController Delegates
     func veganRecipeMealsViewController(_ controller: VeganRecipeMealsViewController, didSelect meal: [String]) {
         retrieveDietAndMeal(meal)
-        print("Recived diet : \(dietType ?? "none")")
-        print("Recived meal : \(mealtype ?? "none") ")
     }
     
     func vegetarianRecipeMealsViewController(_ controller: VegetarianRecipeMealsViewController, didSelect meal: [String]) {
         retrieveDietAndMeal(meal)
-        print("Recived diet : \(dietType ?? "none")")
-        print("Recived meal : \(mealtype ?? "none") ")
     }
     
     func pescatarianRecipeMealsViewController(_ controller: PescatarianRecipeMealsViewController, didSelect meal: [String]) {
         retrieveDietAndMeal(meal)
-        print("Recived diet : \(dietType ?? "none")")
-        print("Recived meal : \(mealtype ?? "none") ")
     }
     
     
@@ -62,6 +60,11 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         mealtype = info[1]
     }
     
+    
+    //MARK: - Recipe View Controller Delegate
+    func recipeViewController(_ controller: RecipeViewController, currentMealAndDiet dietAndMeal: [String]) {
+        retrieveDietAndMeal(dietAndMeal)
+    }
     
     
     
@@ -103,6 +106,8 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
+        selectedRecipeID = String(searchResults[indexPath.row].id)
+        performSegue(withIdentifier: "showRecipe", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -153,7 +158,7 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         let diet = formatDietType(searchParameters[0])
         let meal = formatMealType(searchParameters[1])
         let urlString = String(
-            format: "https://api.spoonacular.com/recipes/complexSearch?apiKey=053be10d85bb42498c0223fb6593cbac&diet=%@&type=%@&instructionsRequired=true&addRecipeInformation=true&sort=random&number=100",
+            format: "https://api.spoonacular.com/recipes/complexSearch?apiKey=f6cf877f8db046999cbd145430156c8d&diet=%@&type=%@&instructionsRequired=true&addRecipeInformation=true&sort=random&number=100",
             diet,
             meal)
         let url = URL(string: urlString)
@@ -185,12 +190,12 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         present(alert, animated: true, completion: nil)
     }
     
+    
     //*************************************************************************************************
     
     func gatherSearchResults(_ parameters: [String]) {
         if parameters[0] == "Vegan Recipes" {
             let url = self.recipeUrl(searchParameters: parameters)
-            print("url is \(url)")
             
             let session = URLSession.shared
             let dataTask = session.dataTask(with: url) {data, response, error in
@@ -213,8 +218,6 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
         } else if parameters[0] == "Vegetarian Recipes" {
             let url1 = self.recipeUrl(searchParameters: parameters)
             let url2 = self.recipeUrl(searchParameters: ["Vegan Recipes",parameters[1]])
-            print("url1 is \(url1)")
-            print("url2 is \(url2)")
             
             let session = URLSession.shared
             let dataTask = session.dataTask(with: url1) {data, response, error in
@@ -253,9 +256,7 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
             let url1 = self.recipeUrl(searchParameters: parameters)
             let url2 = self.recipeUrl(searchParameters: ["Vegan Recipes",parameters[1]])
             let url3 = self.recipeUrl(searchParameters: ["Vegetarian Recipes",parameters[1]])
-            print("url1 is \(url1)")
-            print("url2 is \(url2)")
-            print("url3 is \(url3)")
+            
             
             let session = URLSession.shared
             let dataTask = session.dataTask(with: url1) {data, response, error in
@@ -304,44 +305,22 @@ class RecipeListTableViewController: UITableViewController, VeganRecipeMealsView
             }
             dataTask.resume()
         }
-        
-        //************************************************************************************************
-        
-        // MARK: - Navigation
-        
-        
-        
-        
-        
     }
-}
-
-extension UIImageView {
-  func loadImage(url: URL) -> URLSessionDownloadTask {
-    let session = URLSession.shared
-    let downloadTask = session.downloadTask(with: url) {
-      [weak self] url, _, error in
-      if error == nil, let url = url,
-        let data = try? Data(contentsOf: url),
-        let image = UIImage(data: data) {
-        DispatchQueue.main.async {
-          if let weakSelf = self {
-            weakSelf.image = image
-          }
+    //************************************************************************************************
+    
+    
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRecipe" {
+            let controller = segue.destination as! RecipeViewController
+            self.delegate = controller
+            delegate?.recipeListTableViewController(self, didSelectID: selectedRecipeID!)
+            delegate?.recipeListTableViewController(self, currentSearchCategories: [dietType,mealtype])
         }
-      }
     }
-    downloadTask.resume()
-    return downloadTask
-  }
+    
+    
+    
 }
 
-
-
-//var stateLock = NSLock()
-//func setFullName(firstName: String, lastName: String) {
-//    stateLock.lock()
-//    self.firstName = firstName
-//    self.lastName = lastName
-//    stateLock.unlock()
-//}

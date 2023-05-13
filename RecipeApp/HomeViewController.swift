@@ -30,7 +30,7 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        slide in animation for welcome back label
+        //slide in animation for welcome back label
         UIView.animate(withDuration: 0.90) {
               self.welcomeBackLabel.center.x += (self.view.bounds.width)
         }
@@ -43,13 +43,13 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.appMovedToBackground),
+            selector: #selector(appMovedToBackground),
             name: UIApplication.didEnterBackgroundNotification,
             object: nil)
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.appMovedToForeground),
+            selector: #selector(appMovedToForeground),
             name: UIApplication.willEnterForegroundNotification,
             object: nil)
         
@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
         welcomeBackLabel.center.x -= (view.bounds.width)
         
   
-        //Hiding nav bar exclusively for home screen
+        //Hiding nav bar for this screen
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -95,7 +95,8 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //Hiding nav bar exclusively for home screen
+        
+        //Making nav bar visible again for next screen
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -139,7 +140,7 @@ class HomeViewController: UIViewController, InitialFirstNameViewControllerDelega
                                 self.currentFact = self.factsToBeDisplayed.randomElement()!
                             }
                             //animating the transition between facts to make the new one fade in
-                            UIView.animate(withDuration: 1.3) {
+                            UIView.animate(withDuration: 1.6) {
                                 self.factsLabel.alpha = 0.3
                                 self.factsLabel.alpha = 1.0
                             }
